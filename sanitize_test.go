@@ -22,6 +22,10 @@ var urls = []Test{
 	{"../4 icon.*", `/4-icon.`},
 	{"Spac ey/Nôm/test før url", `spac-ey/nom/test-foer-url`},
 	{"../*", `/`},
+	{"中文.文件", `中文.文件`},
+	{"!中文.文件", `中文.文件`},
+	{"../中文.文件", `/中文.文件`},
+	{"中 文.文件", `中-文.文件`},
 }
 
 func TestPath(t *testing.T) {

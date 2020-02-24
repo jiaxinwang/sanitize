@@ -160,7 +160,7 @@ func HTML(s string) (output string) {
 }
 
 // We are very restrictive as this is intended for ascii url slugs
-var illegalPath = regexp.MustCompile(`[^[:alnum:]\~\-\./]`)
+var illegalPath = regexp.MustCompile("[^([:alnum:]\u4e00-\u9fa5)\\~\\-\\./]")
 
 // Path makes a string safe to use as a URL path,
 // removing accents and replacing separators with -.
@@ -356,7 +356,7 @@ var (
 )
 
 // cleanString replaces separators with - and removes characters listed in the regexp provided from string.
-// Accents, spaces, and all characters not in A-Za-z0-9 are replaced.
+// Accents, spaces, and all characters not in A-Za-z0-9 and chinese characters are replaced.
 func cleanString(s string, r *regexp.Regexp) string {
 
 	// Remove any trailing space to avoid ending on -
